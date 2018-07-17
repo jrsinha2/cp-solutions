@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define f(i,a,n) for(int i=a;i<n;i++)
+//map<ll,ll> m; 
+int main() {
+	int n;cin >> n;
+	int arr[n];int i;
+	for(i=0;i<n;i++)cin >> arr[i];
+	long long int ans=0;
+	set<int> x;
+	set<int> dist;
+	int val[n];
+	for(i=n-1;i>=0;i--)
+	{
+		dist.insert(arr[i]);
+		val[i]=dist.size();
+	}
+	for(i=0;i<n-1;i++)
+	{
+		//Robot to move only till here
+		if(x.find(arr[i])!=x.end())
+		continue;
+		x.insert(arr[i]);
+		ans+=val[i+1];
+	}
+	cout << ans << endl;
+	// your code goes here
+	return 0;
+}
