@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define f(i,a,n) for(int i=a;i<n;i++)
+//map<ll,ll> m; 
+int main()
+{	ll n,d;
+	cin>>n>>d;
+	ll a[n];
+	f(i,0,n)
+		cin>>a[i];
+	ll c=2;
+	ll co=a[0]-d;
+	
+	map<ll,ll> m;
+	m[co]=1;
+	co=a[n-1]+d;
+	m[co]=1;
+	for(int i=1;i<n;i++)
+	{	co=a[i-1]+d;
+		if(abs(a[i]-co)>=d && m.find(co)==m.end())
+		{	c++;
+			m[co]=1;
+		}
+		co=a[i]-d;
+		if(abs(co-a[i-1])>=d && m.find(co)==m.end())
+		{	c++;
+			m[co]=1;
+		}
+	}
+	cout<<c;
+	return 0;
+}
